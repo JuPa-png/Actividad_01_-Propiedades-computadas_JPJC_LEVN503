@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/bootstrap.min.css">
+    <title>Almacén Venta de Videojuegos</title>
+</head>
+
+<body class="container mt-4">
+
+<section id="componente">
+
+    <h1>Almacén Venta de Videojuegos</h1>
+
+    <hr>
+
+    <form @submit.prevent="agregarProducto" class="row g-2">
+
+        <div class="col-md-4">
+            <input type="text" class="form-control"
+                   placeholder="Nombre del videojuego"
+                   v-model="nombre">
+        </div>
+
+        <div class="col-md-3">
+            <input type="number" class="form-control"
+                   placeholder="Precio"
+                   v-model="precio">
+        </div>
+
+        <div class="col-md-3">
+            <input type="number" class="form-control"
+                   placeholder="Cantidad"
+                   v-model="cantidad">
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary w-100">Agregar</button>
+        </div>
+
+    </form>
+
+    <hr>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(p, i) in productos" :key="i">
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.precio }}</td>
+                <td>{{ p.cantidad }}</td>
+                <td>{{ p.precio * p.cantidad }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Subtotal: {{ subtotal }}</p>
+    <p>IVA (16%): {{ iva }}</p>
+    <p><strong>Total a pagar: {{ totalPagar }}</strong></p>
+
+</section>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+<script src="../JS/main 1.js"></script>
+
+</body>
+</html>
